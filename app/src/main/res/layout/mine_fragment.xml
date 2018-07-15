@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+   <!-- <com.race604.flyrefresh.FlyRefreshLayout
+        android:id="@+id/mine_fragment_flyrefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               >
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="50dp"
+                   android:gravity="center"
+                   android:text="我的"
+                   android:textColor="#f00"
+                   android:textSize="30dp" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               >
+
+               <ImageButton
+                   android:id="@+id/mine_fragment_imageButton"
+                   android:layout_width="150dp"
+                   android:layout_height="150dp"
+                    android:src="@drawable/user"
+                   android:layout_gravity="center"
+
+                   />
+               <TextView
+                   android:id="@+id/mine_fragment_uanme"
+                   android:layout_width="match_parent"
+                   android:layout_height="40dp"
+                   android:gravity="center"
+                   android:text="大多数"
+                   android:textSize="20dp"
+                   />
+           </LinearLayout>
+
+
+       </LinearLayout>
+
+    </com.race604.flyrefresh.FlyRefreshLayout>-->
+
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="我的"
+            android:textColor="#f00"
+            android:textSize="30dp" />
+    </LinearLayout>
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/timg"
+           />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@drawable/reg_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/sz" />
+
+            <ImageView
+                android:id="@+id/my_image_xx"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/xx" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="30dp"
+            android:orientation="horizontal">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/mine_fragment_imageButton"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:placeholderImage="@drawable/user" />
+
+            <TextView
+                android:id="@+id/mine_fragment_uanme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="登录"
+                android:textColor="#fff"
+                android:textSize="26dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mine_fragment_login_recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mine_fragment_login_recycleView_gd"
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff" />
+
+    <ImageView
+        android:src="@drawable/b5a"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

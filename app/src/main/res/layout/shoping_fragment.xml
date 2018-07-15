@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ExpandableListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/shoping_fragment_expandableListView"
+        ></ExpandableListView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#d0d0d0"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:id="@+id/shoping_fragment_chieckboxAll"
+            />
+        <TextView
+            android:layout_toRightOf="@+id/shoping_fragment_chieckboxAll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="全选"
+            android:textStyle="bold"
+            android:id="@+id/gou_item_sumPrice"
+            />
+        <TextView
+            android:id="@+id/shoping_fragment_priceAll"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/gou_item_sumPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="总价:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+        <Button
+            android:gravity="center_vertical"
+            android:id="@+id/shoping_fragment_numBer"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:text="结算:(1)"
+
+            />
+
+    </RelativeLayout>
+</RelativeLayout>
