@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.mine.view.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.mvp.mine.model.adapter.MyRecycleAdapterdd;
 import com.example.wangtao.project_jingdong.mvp.mine.model.adapter.MyRecycleAdaptergd;
 import com.example.wangtao.project_jingdong.mvp.mine.view.activity.MineLoginActivity;
+import com.example.wangtao.project_jingdong.mvp.mine.view.activity.MineinformActivity;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.scwang.smartrefresh.header.FlyRefreshHeader;
 import com.scwang.smartrefresh.header.WaveSwipeHeader;
@@ -30,6 +33,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by wangtao on 2018/7/11.
@@ -67,17 +72,55 @@ public class MineFragment extends Fragment {
         simpleDraweeView = view.findViewById(R.id.mine_fragment_imageButton);
         //获取点击事件
         uname = view.findViewById(R.id.mine_fragment_uanme);
-        simpleDraweeView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), MineLoginActivity.class);
-                startActivityForResult(intent,1);
-            }
-        });
+
         initData();
     }
 
     private void initData() {
+
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("name", MODE_PRIVATE);
+        boolean ischeck = sharedPreferences.getBoolean("ischeck", false);
+        if (ischeck){
+            String username = sharedPreferences.getString("username", "");
+            String image = sharedPreferences.getString("image", "");
+            uname.setText(username);
+            Uri uri=Uri.parse(image);
+            simpleDraweeView.setImageURI(uri);
+
+            simpleDraweeView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getContext(), MineinformActivity.class);
+                    startActivityForResult(intent,3);
+                    //startActivity(intent);
+
+                }
+            });
+            uname.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getContext(), MineinformActivity.class);
+                    startActivityForResult(intent,3);
+                }
+            });
+        }else{
+            simpleDraweeView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getContext(), MineLoginActivity.class);
+                    startActivityForResult(intent,1);
+                    //startActivity(intent);
+
+                }
+            });
+            uname.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getContext(), MineLoginActivity.class);
+                    startActivityForResult(intent,1);
+                }
+            });
+        }
 
         listPic_dd = new ArrayList<>();
         listPic_dd.add(R.drawable.dianpu);
@@ -125,13 +168,29 @@ public class MineFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode ==1 && requestCode == 1){
-                String userName = data.getStringExtra("userName");
-                String image = data.getStringExtra("image");
-                uname.setText(userName);
-                if (image != null){
-                    Uri uri=Uri.parse(image);
-                    simpleDraweeView.setImageURI(uri);
-                }
+            SharedPreferences sharedPreferences=getActivity().getSharedPreferences("name", MODE_PRIVATE);
+            //boolean ischeck = sharedPreferences.getBoolean("ischeck", false);
+            String username = sharedPreferences.getString("username", "");
+            String image = sharedPreferences.getString("image", "");
+            uname.setText(username);
+            Uri uri=Uri.parse(image);
+            simpleDraweeView.setImageURI(uri);
         }
+        if (requestCode ==3 && requestCode == 3){
+            SharedPreferences sharedPreferences=getActivity().getSharedPreferences("name", MODE_PRIVATE);
+            //boolean ischeck = sharedPreferences.getBoolean("ischeck", false);
+            //SharedPreferences.Editor editor = sharedPreferences.edit();
+            // editor.putBoolean("ischeck",false);
+            Log.e("tag", "onActivityResult: "+"进来了都                +++++" );
+            String username = sharedPreferences.getString("username", "");
+            String image = sharedPreferences.getString("image", "");
+            uname.setText(username);
+            Uri uri=Uri.parse(image);
+            simpleDraweeView.setImageURI(uri);
+        }
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
     }
 }

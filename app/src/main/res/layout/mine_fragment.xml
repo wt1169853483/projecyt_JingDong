@@ -115,6 +115,7 @@
                 android:id="@+id/mine_fragment_imageButton"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
+                app:roundAsCircle="true"
                 app:placeholderImage="@drawable/user" />
 
             <TextView

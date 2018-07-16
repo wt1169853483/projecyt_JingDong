@@ -1,8 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.mine.view.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +24,9 @@ public class MineLoginActivity extends BaseActivity<MinePresenter> implements IM
     private String uname;
     private String password;
     private TextView regText;
+    private SharedPreferences shared;
+    private boolean ischeck;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected int protetedId() {
@@ -41,6 +43,9 @@ public class MineLoginActivity extends BaseActivity<MinePresenter> implements IM
         pwd = findViewById(R.id.mine_fragment_login_pwd);
         loginBtn = findViewById(R.id.mine_fragment_login_loginBtn);
         regText = findViewById(R.id.mine_fragment_login_reg);
+        //sharedPreferences
+        shared = getSharedPreferences("name", MODE_PRIVATE);
+        editor = shared.edit();
     }
 
     @Override
@@ -82,11 +87,15 @@ public class MineLoginActivity extends BaseActivity<MinePresenter> implements IM
         MineLoginBean.DataBean data = json.getData();
         if (json.getCode().equalsIgnoreCase("0")){
             Toast.makeText(MineLoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-
+            editor.putBoolean("ischeck",true);
+            editor.putString("image",data.getIcon()+"");
+            editor.putString("username",json.getData().getUsername());
+            editor.commit();
             Intent intent = getIntent();
-            intent.putExtra("userName",json.getData().getUsername());
-            intent.putExtra("image",json.getData().getIcon()+"");
+           /* intent.putExtra("userName",json.getData().getUsername());
+            intent.putExtra("image",json.getData().getIcon()+"");*/
             setResult(1,intent);
+
             finish();
         }else{
             Toast.makeText(MineLoginActivity.this,"证号密码不正确",Toast.LENGTH_SHORT).show();

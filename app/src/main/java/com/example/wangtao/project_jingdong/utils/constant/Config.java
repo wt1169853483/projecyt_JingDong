@@ -19,6 +19,8 @@ public class Config {
     public final static String classify_LeftURl="product/getCatagory";
     public final static String classify_RightURl="product/getProductCatagory";
 
+    //查询分类product/getProducts
+    public final static String fei_pscid="product/getProducts";
     //首页搜索
     public final static String fei_sousuo="product/searchProducts";
 
@@ -31,4 +33,6 @@ public class Config {
     public final static String addCar_url="product/addCart";
     //查询购物车 https://www.zhaoapi.cn/product/getCarts?uid=16443
     public final static String getCar_url="product/getCarts";
+
+
 }

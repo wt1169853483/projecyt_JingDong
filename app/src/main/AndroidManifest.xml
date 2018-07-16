@@ -26,7 +26,8 @@
         <activity android:name=".mvp.mine.view.activity.MineRegActivity" />
         <activity android:name=".mvp.homepage.view.activity.HomeActivity" />
         <activity android:name=".mvp.homepage.view.activity.HomeSearchActivity" />
-        <activity android:name=".mvp.classify.view.activity.ClassRecycleActivity"></activity>
+        <activity android:name=".mvp.classify.view.activity.ClassRecycleActivity" />
+        <activity android:name=".mvp.mine.view.activity.MineinformActivity"></activity>
     </application>
 
 </manifest>

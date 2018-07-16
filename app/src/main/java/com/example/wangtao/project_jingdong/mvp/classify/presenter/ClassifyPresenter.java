@@ -6,6 +6,7 @@ import com.example.wangtao.project_jingdong.base.BasePresenter;
 import com.example.wangtao.project_jingdong.base.Iview;
 import com.example.wangtao.project_jingdong.mvp.classify.model.ClassifyModel;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
+import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 import com.example.wangtao.project_jingdong.mvp.classify.view.iview.IClassView;
 
@@ -91,6 +92,36 @@ public class ClassifyPresenter extends BasePresenter<IClassView> {
 
                            }
                        });
+    }
+    public void getPscidRightPresenter(String pscid) {
+        classifyModel.getPscidModel(pscid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ClassifyPscidBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(ClassifyPscidBean classifyPscidBean) {
+                        if(iview != null){
+                            iview.getPscidRightSuccess(classifyPscidBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if(iview != null){
+                            iview.getClassError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
 }

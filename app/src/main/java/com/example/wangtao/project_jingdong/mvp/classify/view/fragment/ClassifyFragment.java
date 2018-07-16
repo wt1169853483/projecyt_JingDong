@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseFragment;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
+import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 import com.example.wangtao.project_jingdong.mvp.classify.presenter.ClassifyPresenter;
 import com.example.wangtao.project_jingdong.mvp.classify.view.iview.IClassView;
@@ -119,6 +120,11 @@ public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements
 
     @Override
     public void getClassRightError(String error) {
+
+    }
+
+    @Override
+    public void getPscidRightSuccess(ClassifyPscidBean json) {
 
     }
 

@@ -3,6 +3,7 @@ package com.example.wangtao.project_jingdong.mvp.classify.model;
 import android.util.Log;
 
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
+import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.MyApi;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeUtilBean;
@@ -28,5 +29,10 @@ public class ClassifyModel {
         ClassifyApi classifyApi = MyRetrofitManager.getDefault().create(ClassifyApi.class);
         Observable<ClassifyRightBean> classifyRightUrl = classifyApi.getClassifyRightUrl(url);
         return classifyRightUrl;
+    }
+    public Observable<ClassifyPscidBean> getPscidModel(String pscid){
+       /* ClassifyApi classifyApi = MyRetrofitManager.getDefault().create(ClassifyApi.class);
+        Observable<ClassifyRightBean> classifyRightUrl = classifyApi.getClassifyRightUrl(pscid);*/
+        return MyRetrofitManager.getDefault().create(ClassifyApi.class).getPscidRightUrl(pscid);
     }
 }

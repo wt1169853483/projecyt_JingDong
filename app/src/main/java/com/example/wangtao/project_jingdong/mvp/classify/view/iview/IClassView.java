@@ -2,6 +2,7 @@ package com.example.wangtao.project_jingdong.mvp.classify.view.iview;
 
 import com.example.wangtao.project_jingdong.base.Iview;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
+import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 
 /**
@@ -15,4 +16,5 @@ public interface IClassView extends Iview {
       void getClassError(String error);
       void getClassRightSuccess(ClassifyRightBean json);
       void getClassRightError(String error);
+      void getPscidRightSuccess(ClassifyPscidBean json);
 }

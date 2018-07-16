@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.classify.model;
 
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
+import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 import com.example.wangtao.project_jingdong.utils.constant.Config;
 
@@ -20,4 +21,6 @@ public interface ClassifyApi {
 
         @GET(Config.classify_RightURl)
         Observable<ClassifyRightBean> getClassifyRightUrl(@Query("cid") String cid);
+        @GET(Config.fei_pscid)
+        Observable<ClassifyPscidBean> getPscidRightUrl(@Query("pscid") String pscid);
 }
