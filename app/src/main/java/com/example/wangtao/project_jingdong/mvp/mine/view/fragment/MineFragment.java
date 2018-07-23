@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wangtao.project_jingdong.R;
@@ -57,6 +58,7 @@ public class MineFragment extends Fragment {
     private RecyclerView recyclerView_dd;
     private RecyclerView recyclerView_gd;
     private SimpleDraweeView simpleDraweeView;
+    private ImageView infoImage;
 
     @Nullable
     @Override
@@ -70,6 +72,7 @@ public class MineFragment extends Fragment {
         recyclerView_dd = view.findViewById(R.id.mine_fragment_login_recycleView);
         recyclerView_gd = view.findViewById(R.id.mine_fragment_login_recycleView_gd);
         simpleDraweeView = view.findViewById(R.id.mine_fragment_imageButton);
+        infoImage = view.findViewById(R.id.mine_fragment_login_info_image);
         //获取点击事件
         uname = view.findViewById(R.id.mine_fragment_uanme);
 
@@ -116,12 +119,19 @@ public class MineFragment extends Fragment {
             uname.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(getContext(), MineLoginActivity.class);
-                    startActivityForResult(intent,1);
+                    Intent intent=new Intent(getContext(), MineinformActivity.class);
+                    startActivityForResult(intent,3);
                 }
             });
         }
 
+        infoImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), MineinformActivity.class);
+                startActivityForResult(intent,1);
+            }
+        });
         listPic_dd = new ArrayList<>();
         listPic_dd.add(R.drawable.dianpu);
         listPic_dd.add(R.drawable.dsh);
@@ -135,7 +145,6 @@ public class MineFragment extends Fragment {
         listTitle_dd.add("待评价");
         listTitle_dd.add("退货/售后");
         listTitle_dd.add("我的订单");
-
         listPic_gd = new ArrayList<>();
         listPic_gd.add(R.drawable.dp);
         listPic_gd.add(R.drawable.kh);
@@ -150,7 +159,7 @@ public class MineFragment extends Fragment {
         listTitle_gd.add("超市");
         listTitle_gd.add("收藏");
 
-        MyRecycleAdapterdd myRecycle_dd = new MyRecycleAdapterdd(listPic_dd, listTitle_dd);
+        MyRecycleAdapterdd myRecycle_dd = new MyRecycleAdapterdd(listPic_dd, listTitle_dd,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView_dd.setLayoutManager(linearLayoutManager);
@@ -175,20 +184,33 @@ public class MineFragment extends Fragment {
             uname.setText(username);
             Uri uri=Uri.parse(image);
             simpleDraweeView.setImageURI(uri);
+            initData();
         }
         if (requestCode ==3 && requestCode == 3){
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("name", MODE_PRIVATE);
-            //boolean ischeck = sharedPreferences.getBoolean("ischeck", false);
-            //SharedPreferences.Editor editor = sharedPreferences.edit();
-            // editor.putBoolean("ischeck",false);
-            Log.e("tag", "onActivityResult: "+"进来了都                +++++" );
             String username = sharedPreferences.getString("username", "");
             String image = sharedPreferences.getString("image", "");
+          // String image = sharedPreferences.getSt
+            // ring("image", "");
             uname.setText(username);
             Uri uri=Uri.parse(image);
             simpleDraweeView.setImageURI(uri);
+           /* Intent intent=new Intent(getContext(), MineLoginActivity.class);
+            startActivityForResult(intent,4);*/
+            initData();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("name", MODE_PRIVATE);
+       // String username = sharedPreferences.getString("username", "");
+        String image = sharedPreferences.getString("image", "");
+        Uri uri=Uri.parse(image);
+        simpleDraweeView.setImageURI(uri);
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);

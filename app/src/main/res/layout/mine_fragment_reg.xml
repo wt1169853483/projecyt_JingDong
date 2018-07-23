@@ -2,24 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#fff"
-    >
-    <LinearLayout
+    android:background="#fff">
+    <!--<LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
          android:orientation="horizontal"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="注册界面"
             android:gravity="center"
             android:textColor="#000"
             android:background="#e7e7e7"
             />
-    </LinearLayout>
+    </LinearLayout>-->
+    <com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView
+        android:id="@+id/mine_fragment_reg_mytilte"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:left_text="返回"
+        app:right_text="@string/fgh_text_loading_failed"
+        app:right_visibility="false"
+        app:search_text="注册界面">
+
+    </com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
@@ -28,8 +38,8 @@
         >
         <ImageView
 
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:src="@drawable/root"
             />
     </LinearLayout>
@@ -102,11 +112,11 @@
         android:layout_marginTop="20dp"
         >
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             android:background="#fa5e5e"
             android:text="注册"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textColor="#fff"
             android:id="@+id/mine_fragment_reg_loginBtn"
             />

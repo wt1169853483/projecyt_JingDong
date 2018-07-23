@@ -1,9 +1,11 @@
-package com.example.wangtao.project_jingdong.mvp.indent.model;
+package com.example.wangtao.project_jingdong.mvp.addrs.model;
 
-import com.example.wangtao.project_jingdong.mvp.classify.model.ClassifyApi;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsAddBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsDefaultBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsSetBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUpdataBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUserBean;
+import com.example.wangtao.project_jingdong.mvp.indent.model.IndentApi;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentAddrBean;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentBean;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentUpdataBean;
@@ -17,22 +19,31 @@ import io.reactivex.Observable;
  * 描述:
  * 作者:wangtao
  */
-public class IndentModel {
-    private static final String TAG = "ClassifyModel";
+public class AddrsModel {
+    public Observable<AddrsDefaultBean> getDefaultAddrModel(String uid){
+        AddrsApi addrsApi = MyRetrofitManager.getDefault().create(AddrsApi.class);
+        Observable<AddrsDefaultBean> defaAddrightUrl = addrsApi.getDefaAddrightUrl(uid);
+        return defaAddrightUrl;
+    }
+    public Observable<AddrsUserBean> getUserAddrModel(String uid){
+        AddrsApi addrsApi = MyRetrofitManager.getDefault().create(AddrsApi.class);
+        Observable<AddrsUserBean> defaAddrightUrl = addrsApi.getUserRightUrl(uid);
+        return defaAddrightUrl;
+    }
+    public Observable<AddrsAddBean> getAddAddrModel(String uid,String addr,String mobile,String name){
+        AddrsApi addrsApi = MyRetrofitManager.getDefault().create(AddrsApi.class);
+        Observable<AddrsAddBean> defaAddrightUrl = addrsApi.getAddRightUrl(uid,addr,mobile,name);
+        return defaAddrightUrl;
+    }
 
-    public Observable<IndentBean> getClassifyModel(String uid){
-        IndentApi indentApi = MyRetrofitManager.getDefault().create(IndentApi.class);
-        Observable<IndentBean> butRightUrl = indentApi.getButRightUrl(uid);
-        return butRightUrl;
+    public Observable<AddrsUpdataBean> getUpdataAddrModel(String uid, String addrid,String mobile, String name, String addr){
+        AddrsApi addrsApi = MyRetrofitManager.getDefault().create(AddrsApi.class);
+        Observable<AddrsUpdataBean> defaAddrightUrl = addrsApi.getUpdataRightUrl(uid,addrid,mobile,name,addr);
+        return defaAddrightUrl;
     }
-    public Observable<IndentUpdataBean> getUpdataIndentModel(String uid,String status,String orderId){
-        IndentApi indentApi = MyRetrofitManager.getDefault().create(IndentApi.class);
-        Observable<IndentUpdataBean> updataRightUrl = indentApi.getUpdataRightUrl(uid, status, orderId);
-        return updataRightUrl;
-    }
-    public Observable<IndentAddrBean> getDefaultAddrModel(String uid){
-        IndentApi indentApi = MyRetrofitManager.getDefault().create(IndentApi.class);
-        Observable<IndentAddrBean> updataRightUrl = indentApi.getDefaAddrightUrl(uid);
-        return updataRightUrl;
+    public Observable<AddrsSetBean> getSetAddrModel(String uid, String addrid, String status){
+        AddrsApi addrsApi = MyRetrofitManager.getDefault().create(AddrsApi.class);
+        Observable<AddrsSetBean> defaAddrightUrl = addrsApi.getSetDefaAddrightUrl(uid,addrid,status);
+        return defaAddrightUrl;
     }
 }

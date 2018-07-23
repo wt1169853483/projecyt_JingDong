@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.homepage.model;
 
 
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeCatagoryBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeSearchBean;
@@ -36,4 +37,10 @@ public interface MyApi {
         //查询搜索框
         @GET(Config.fei_sousuo)
         Observable<HomeSearchBean> homegetSearch(@Query("keywords") String keywords,@Query("page") String page,@Query("sort") String sort);
+       //立即购买  ?uid=15314&status=1&orderId=10966 https://www.zhaoapi.cn/product/createOrder?uid=71&price=99.99
+      /* @GET(Config.getBut_Info)
+       Observable<HomeButBean> getBuySearch(@Query("uid") String uid, @Query("status") String status, @Query("orderId") String orderId);*/
+       @GET(Config.getBut_Info)
+       Observable<HomeButBean> getBuySearch(@Query("uid") String uid,@Query("price") String price);
+
 }

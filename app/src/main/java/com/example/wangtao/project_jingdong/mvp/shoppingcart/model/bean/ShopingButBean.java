@@ -1,4 +1,4 @@
-package com.example.wangtao.project_jingdong.mvp.indent.model.bean;
+package com.example.wangtao.project_jingdong.mvp.shoppingcart.model.bean;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * 描述:
  * 作者:wangtao
  */
-public class IndentBean {
+public class ShopingButBean {
 
     /**
      * msg : 请求成功

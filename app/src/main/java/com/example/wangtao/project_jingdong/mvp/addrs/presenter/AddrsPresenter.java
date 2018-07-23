@@ -1,16 +1,13 @@
-package com.example.wangtao.project_jingdong.mvp.indent.presenter;
+package com.example.wangtao.project_jingdong.mvp.addrs.presenter;
 
 import com.example.wangtao.project_jingdong.base.BasePresenter;
-import com.example.wangtao.project_jingdong.mvp.classify.model.ClassifyModel;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
-import com.example.wangtao.project_jingdong.mvp.classify.view.iview.IClassView;
-import com.example.wangtao.project_jingdong.mvp.indent.model.IndentModel;
-import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentAddrBean;
-import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentBean;
-import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentUpdataBean;
-import com.example.wangtao.project_jingdong.mvp.indent.view.iview.IndentView;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.AddrsModel;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsAddBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsDefaultBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsSetBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUpdataBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUserBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.view.iview.IAddrsView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,64 +20,33 @@ import io.reactivex.schedulers.Schedulers;
  * 描述:
  * 作者:wangtao
  */
-public class IndentPresenter extends BasePresenter<IndentView> {
+public class AddrsPresenter extends BasePresenter<IAddrsView> {
 
-   private IndentModel indentModel;
 
-    public IndentPresenter(IndentView iview) {
+    private AddrsModel addrsModel;
+
+    public AddrsPresenter(IAddrsView iview) {
         super(iview);
     }
-
     @Override
     protected void onModel() {
-           indentModel=new IndentModel();
+        addrsModel = new AddrsModel();
     }
 
-
-    public void getClassPresenter(String uid){
-        indentModel.getClassifyModel(uid)
-                  .subscribeOn(Schedulers.io())
-                  .observeOn(AndroidSchedulers.mainThread())
-                  .subscribe(new Observer<IndentBean>() {
-                      @Override
-                      public void onSubscribe(Disposable d) {
-                            compositeDisposable.add(d);
-                      }
-
-                      @Override
-                      public void onNext(IndentBean indentBean) {
-                          if (iview != null){
-                              iview.getDataSuccess(indentBean);
-                          }
-                      }
-
-                      @Override
-                      public void onError(Throwable e) {
-                          if (iview != null){
-                              iview.getDataError(e.toString());
-                          }
-                      }
-
-                      @Override
-                      public void onComplete() {
-
-                      }
-                  });
-    }
-    public void getClassPresenter(String uid,String status,String orderId){
-        indentModel.getUpdataIndentModel(uid,status,orderId)
+    public void getDefaultAddrPresenter(String uid){
+        addrsModel.getDefaultAddrModel(uid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IndentUpdataBean>() {
+                .subscribe(new Observer<AddrsDefaultBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                         compositeDisposable.add(d);
+                          compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onNext(IndentUpdataBean indentUpdataBean) {
+                    public void onNext(AddrsDefaultBean addrsDefaultBean) {
                         if (iview != null){
-                            iview.getUpdataSuccess(indentUpdataBean);
+                            iview.getDataSuccess(addrsDefaultBean);
                         }
                     }
 
@@ -97,20 +63,110 @@ public class IndentPresenter extends BasePresenter<IndentView> {
                     }
                 });
     }
-    public void getDefaultAddrPresenter(String uid){
-        indentModel.getDefaultAddrModel(uid)
+    public void getUserAddrPresenter(String uid){
+        addrsModel.getUserAddrModel(uid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<IndentAddrBean>() {
+                .subscribe(new Observer<AddrsUserBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                          compositeDisposable.add(d);
                     }
 
                     @Override
-                    public void onNext(IndentAddrBean indentAddrBean) {
+                    public void onNext(AddrsUserBean addrsUserBean) {
                         if (iview != null){
-                            iview.getDufaAddrSuccess(indentAddrBean);
+                            iview.getUserSuccess(addrsUserBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getDataError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void getAddAddrPresenter(String uid,String addr,String mobile,String name){
+        addrsModel.getAddAddrModel(uid,addr,mobile,name)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AddrsAddBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                          compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(AddrsAddBean addrsAddBean) {
+                        if (iview != null){
+                            iview.getAddSuccess(addrsAddBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getDataError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void getUpdataAddrPresenter(String uid, String addrid,String mobile, String name, String addr){
+        addrsModel.getUpdataAddrModel(uid,addrid,mobile,name,addr)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AddrsUpdataBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                          compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(AddrsUpdataBean addrsUpdataBean) {
+                        if (iview != null){
+                            iview.getUpdataSuccess(addrsUpdataBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getDataError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void getSetAddrPresenter(String uid, String addrid,String status){
+        addrsModel.getSetAddrModel(uid,addrid,status)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<AddrsSetBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                         compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(AddrsSetBean addrsSetBean) {
+                        if (iview != null){
+                            iview.getSetSuccess(addrsSetBean);
                         }
                     }
 

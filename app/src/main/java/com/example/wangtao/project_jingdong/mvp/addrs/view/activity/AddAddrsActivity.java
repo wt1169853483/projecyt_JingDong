@@ -15,9 +15,95 @@ import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseActivity;
 import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsAddBean;
 import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsDefaultBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsSetBean;
 import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUpdataBean;
 import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUserBean;
 import com.example.wangtao.project_jingdong.mvp.addrs.presenter.AddrsPresenter;
 import com.example.wangtao.project_jingdong.mvp.addrs.view.iview.IAddrsView;
 
+public class AddAddrsActivity extends BaseActivity<AddrsPresenter> implements IAddrsView {
 
+    private EditText namesEdit;
+    private EditText phoneEdit;
+    private EditText addrsEdit;
+    private Button button;
+    private String uid;
+
+    @Override
+    protected int protetedId() {
+        return R.layout.activity_add_addrs;
+    }
+
+    @Override
+    protected void initView() {
+        SharedPreferences name = getSharedPreferences("name", MODE_PRIVATE);
+        uid = name.getString("uid","");
+        namesEdit = findViewById(R.id.activity_add_addrs_names);
+        phoneEdit = findViewById(R.id.activity_add_addrs_phone);
+        addrsEdit = findViewById(R.id.activity_add_addrs_addrs);
+        button = findViewById(R.id.activity_add_addrs_baocun);
+    }
+
+    @Override
+    protected void initListener() {
+
+    }
+
+    @Override
+    protected AddrsPresenter proPresenter() {
+        return new AddrsPresenter(this);
+    }
+
+    @Override
+    protected void initData() {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = namesEdit.getText().toString().trim();
+                String phone = phoneEdit.getText().toString().trim();
+                String addrs = addrsEdit.getText().toString().trim();
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone)&&!TextUtils.isEmpty(addrs)){
+                    Log.e("tag", "onClick: gdjhagdshg"+name+phone +addrs);
+                    presenter.getAddAddrPresenter(uid,addrs,phone,name);
+                }else{
+                    Toast.makeText(AddAddrsActivity.this,"不能为空",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void getDataSuccess(AddrsDefaultBean json) {
+
+    }
+
+    @Override
+    public void getUserSuccess(AddrsUserBean json) {
+
+    }
+
+    @Override
+    public void getAddSuccess(AddrsAddBean json) {
+        if (json.getCode().equalsIgnoreCase("0")){
+            Toast.makeText(AddAddrsActivity.this,"添加成功",Toast.LENGTH_LONG).show();
+            Intent intent = getIntent();
+            setResult(1,intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void getUpdataSuccess(AddrsUpdataBean json) {
+
+    }
+
+    @Override
+    public void getSetSuccess(AddrsSetBean json) {
+
+    }
+
+    @Override
+    public void getDataError(String error) {
+
+    }
+}

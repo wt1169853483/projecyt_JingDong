@@ -41,8 +41,8 @@ public class MyRetrofitManager {
         HttpLoggingInterceptor httpLoggingInterceptor=new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
-                .readTimeout(5000, TimeUnit.MILLISECONDS)
-                .writeTimeout(5000, TimeUnit.MILLISECONDS)
+                //.readTimeout(5000, TimeUnit.MILLISECONDS)
+                //.writeTimeout(5000, TimeUnit.MILLISECONDS)
                 .connectTimeout(5000, TimeUnit.MILLISECONDS)
                 .addInterceptor(httpLoggingInterceptor)
                 .build();

@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.homepage.view.iview;
 
 import com.example.wangtao.project_jingdong.base.Iview;
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeCatagoryBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeUtilBean;
@@ -24,4 +25,6 @@ public interface HomeIview extends Iview {
 
        void getPidDataSuccess(HomePidBean json);
        void getPidDataError(String error);
+
+       void getButHomeSuccess(HomeButBean json);
 }

@@ -25,7 +25,7 @@
     <com.youth.banner.Banner
         android:id="@+id/iv_product_icon_show"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="340dp"
         android:layout_below="@id/ll_title"
         android:padding="5dp" />
 
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="价格"
             android:textColor="#f00"
-            android:textSize="28sp" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tv_product_title_show"
@@ -49,14 +49,14 @@
             android:text="标题"
             android:layout_marginTop="10dp"
             android:textColor="#000"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_product_subhead_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#f00"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_seller_name_show"
@@ -70,7 +70,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:gravity="right"
         android:orientation="horizontal">

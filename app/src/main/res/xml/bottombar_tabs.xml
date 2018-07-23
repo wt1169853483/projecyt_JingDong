@@ -10,6 +10,10 @@
         icon="@drawable/abw"
         title="Nearby" />
     <tab
+        id="@+id/tab_discover"
+        icon="@drawable/aby"
+        title="Nearby" />
+    <tab
         id="@+id/tab_shoping"
         icon="@drawable/abu"
         title="Friends" />

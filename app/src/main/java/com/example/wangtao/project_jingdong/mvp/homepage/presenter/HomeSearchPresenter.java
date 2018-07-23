@@ -3,6 +3,7 @@ package com.example.wangtao.project_jingdong.mvp.homepage.presenter;
 import com.example.wangtao.project_jingdong.base.BasePresenter;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.HomeModel;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.HomeSearchModel;
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeCatagoryBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeSearchBean;
@@ -66,4 +67,5 @@ public class HomeSearchPresenter extends BasePresenter<IHomeSearch> {
                          }
                      });
     }
+
 }

@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.MyApp"
@@ -27,7 +28,12 @@
         <activity android:name=".mvp.homepage.view.activity.HomeActivity" />
         <activity android:name=".mvp.homepage.view.activity.HomeSearchActivity" />
         <activity android:name=".mvp.classify.view.activity.ClassRecycleActivity" />
-        <activity android:name=".mvp.mine.view.activity.MineinformActivity"></activity>
+        <activity android:name=".mvp.mine.view.activity.MineinformActivity" />
+        <activity android:name=".mvp.indent.view.activity.IndentActivity" />
+        <activity android:name=".mvp.addrs.view.activity.AddrsAcrtivity" />
+        <activity android:name=".mvp.addrs.view.activity.AddAddrsActivity" />
+      <!--  <activity android:name=".mvp.addrs.view.activity.AddrsUpdataActivity" />-->
+        <activity android:name=".mvp.addrs.view.activity.AddrsUpdatasActivity"></activity>
     </application>
 
 </manifest>

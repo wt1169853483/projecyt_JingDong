@@ -6,6 +6,7 @@ import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseFragment;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineLoginBean;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineRegBean;
+import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineUploadBean;
 import com.example.wangtao.project_jingdong.mvp.mine.presenter.MinePresenter;
 import com.example.wangtao.project_jingdong.mvp.mine.view.iview.IMineView;
 
@@ -54,6 +55,11 @@ public class MineLoginFragment  extends BaseFragment<MinePresenter> implements I
 
     @Override
     public void RegMineSuccess(MineRegBean json) {
+
+    }
+
+    @Override
+    public void getUploadMineSuccess(MineUploadBean json) {
 
     }
 

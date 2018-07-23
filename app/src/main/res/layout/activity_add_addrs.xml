@@ -1,9 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".mvp.addrs.view.activity.AddAddrsActivity">
-
-</android.support.constraint.ConstraintLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:orientation="vertical"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:text="名称:    "
+               android:textSize="25dp"
+               android:gravity="center_vertical"
+               android:textStyle="bold"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="请输入名称"
+               android:id="@+id/activity_add_addrs_names"
+               />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:text="手机号:"
+               android:textSize="25dp"
+               android:gravity="center_vertical"
+               android:textStyle="bold"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="请输入手机号"
+               android:id="@+id/activity_add_addrs_phone"
+               />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           >
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:text="地址:   "
+               android:textSize="25dp"
+               android:gravity="center_vertical"
+               android:textStyle="bold"
+               />
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="请输入地址"
+               android:id="@+id/activity_add_addrs_addrs"
+               />
+       </LinearLayout>
+   </LinearLayout>
+    <Button
+        android:id="@+id/activity_add_addrs_baocun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:text="添加"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        />
+</LinearLayout>

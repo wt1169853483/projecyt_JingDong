@@ -2,6 +2,7 @@ package com.example.wangtao.project_jingdong.mvp.homepage.model.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
@@ -37,6 +39,7 @@ public class HomeActivityRecycleAdp extends RecyclerView.Adapter<HomeActivityRec
     private Context context;
     private HomePresenter homePresenter;
     private List<String> imageList;
+    private SharedPreferences sharedPreferences;
 
     public HomeActivityRecycleAdp(HomePidBean.DataBean listBean, Context context, HomePresenter homePresenter) {
         this.listBean = listBean;
@@ -49,7 +52,10 @@ public class HomeActivityRecycleAdp extends RecyclerView.Adapter<HomeActivityRec
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_activity_recycle_child, parent, false);
         MyViewHolder myViewHolder=new MyViewHolder(inflate);
+        sharedPreferences = context.getSharedPreferences("name", Context.MODE_PRIVATE);
+
         return myViewHolder;
+
     }
 
     @Override
@@ -79,7 +85,23 @@ public class HomeActivityRecycleAdp extends RecyclerView.Adapter<HomeActivityRec
         holder.addShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homePresenter.getHomeCarPresenter("16443",listBean.getPid()+"");
+                //udi
+                if (sharedPreferences.getBoolean("ischeck",false)){
+                    homePresenter.getHomeCarPresenter(sharedPreferences.getString("uid",""),listBean.getPid()+"");
+                }else{
+                    Toast.makeText(context,"加入失败,请先登录",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });https:
+        holder.buyShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (sharedPreferences.getBoolean("ischeck",false)){
+                   // homePresenter.getHomeCarPresenter(sharedPreferences.getString("uid",""),listBean.getPid()+"");
+                    homePresenter.getBuyPresenter(sharedPreferences.getString("uid","")+"",listBean.getBargainPrice()+"");
+                }else{
+                    Toast.makeText(context,"加入订单,请先登录",Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

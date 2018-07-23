@@ -1,12 +1,9 @@
-package com.example.wangtao.project_jingdong.mvp.discover.Model.adapter;
+package com.example.wangtao.project_jingdong.mvp.indent.model.adapter;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
@@ -17,10 +14,10 @@ import java.util.List;
  * 描述:
  * 作者:wangtao
  */
-public class DiscoverPagerAdapters extends FragmentPagerAdapter {
+public class IndentePagerAdapters extends FragmentPagerAdapter {
    private  List<Fragment> list;
 
-    public DiscoverPagerAdapters(FragmentManager fm, List<Fragment> list) {
+    public IndentePagerAdapters(FragmentManager fm, List<Fragment> list) {
         super(fm);
         this.list = list;
     }

@@ -10,12 +10,16 @@ import com.example.wangtao.project_jingdong.mvp.homepage.view.iview.HomeIview;
 import com.example.wangtao.project_jingdong.mvp.mine.model.MineModel;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineLoginBean;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineRegBean;
+import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineUploadBean;
 import com.example.wangtao.project_jingdong.mvp.mine.view.iview.IMineView;
+
+import java.io.File;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MultipartBody;
 
 /**
  * Created by wangtao on 2018/7/11.
@@ -115,6 +119,68 @@ public class MinePresenter extends BasePresenter<IMineView> {
                         }
                     }
 
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    public void getUploadMineRegPresenter(String uid, MultipartBody.Part file){
+        mineModel.getUploadMineRegModel(uid,file)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MineUploadBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(MineUploadBean mineUploadBean) {
+                        if (iview != null){
+                            iview.getUploadMineSuccess(mineUploadBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getMineError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getMineUserPresenter(String uid){
+
+        mineModel.getMineUserModel(uid)
+
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MineLoginBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(MineLoginBean mineLoginBean) {
+                        if (iview != null){
+                            iview.getMineSuccess(mineLoginBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getMineError(e.toString());
+                        }
+                    }
                     @Override
                     public void onComplete() {
 

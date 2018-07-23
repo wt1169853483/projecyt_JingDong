@@ -33,10 +33,12 @@
             android:textColor="#000"
             android:textSize="20sp" />
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/user" />
+            android:id="@+id/mine_inform_activity_simple"
+            app:placeholderImage="@drawable/user"
+            />
 
         <ImageView
             android:layout_width="10dp"

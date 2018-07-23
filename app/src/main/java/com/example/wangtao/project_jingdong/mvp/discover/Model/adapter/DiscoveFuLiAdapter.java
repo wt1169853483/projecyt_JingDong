@@ -1,5 +1,6 @@
 package com.example.wangtao.project_jingdong.mvp.discover.Model.adapter;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.wangtao.project_jingdong.R;
+import com.example.wangtao.project_jingdong.mvp.discover.Model.bean.FuliBean;
 import com.example.wangtao.project_jingdong.mvp.discover.Model.bean.NewsBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -21,52 +24,27 @@ import java.util.List;
  * 描述:
  * 作者:wangtao
  */
-public class DiscoverAndroidAdapter extends RecyclerView.Adapter{
-   private List<NewsBean.ResultBean.DataBean> list;
+public class DiscoveFuLiAdapter extends RecyclerView.Adapter<DiscoveFuLiAdapter.MyViewHolder>{
+   private  List<FuliBean.NewslistBean> list;
+  private Context context;
 
-    public DiscoverAndroidAdapter(List<NewsBean.ResultBean.DataBean> list) {
+    public DiscoveFuLiAdapter(List<FuliBean.NewslistBean> list, Context context) {
         this.list = list;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == 1){
-            View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.discover_fragment_android_line, parent, false);
-            MyViewHolder myViewHolder=new MyViewHolder(inflate);
-            return myViewHolder;
-        }else{
-            View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.discover_fragment_android_vercal, parent, false);
-            MyvercalViewHolder  myvercalViewHolder=new MyvercalViewHolder(inflate);
-            return myvercalViewHolder;
-        }
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.discover_fragment_fuli_adapter, parent, false);
+        MyViewHolder myViewHolder=new MyViewHolder(inflate);
+        return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-          if (holder instanceof MyViewHolder){
-              MyViewHolder myViewHolder =(MyViewHolder) holder;
-              myViewHolder.titleText.setText(list.get(position).getTitle());
-              myViewHolder.simpleDraweeView.setImageURI(list.get(position).getThumbnail_pic_s());
-          }else if (holder instanceof MyvercalViewHolder){
-              MyvercalViewHolder myvercalViewHolder =(MyvercalViewHolder) holder;
-              myvercalViewHolder.titleText.setText(list.get(position).getTitle());
-              myvercalViewHolder.simpleDraweeView.setImageURI(list.get(position).getThumbnail_pic_s());
-              Uri uri=Uri.parse(list.get(position).getThumbnail_pic_s02());
-              Uri uri1=Uri.parse(list.get(position).getThumbnail_pic_s03());
-              myvercalViewHolder.simpleDraweeView1.setImageURI(uri);
-              myvercalViewHolder.simpleDraweeView2.setImageURI(uri1);
-          }
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        String thumbnail_pic_s03 = list.get(position).getThumbnail_pic_s03();
-        if (!TextUtils.isEmpty(thumbnail_pic_s03)){
-            return 0;
-          }else{
-            return 1;
-        }
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+       // holder.simpleDraweeView.setImageURI(list.get(position).getPicUrl());
+        Glide.with(context).load(list.get(position).getPicUrl()).into(holder.simpleDraweeView);
     }
 
     @Override
@@ -76,22 +54,10 @@ public class DiscoverAndroidAdapter extends RecyclerView.Adapter{
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private SimpleDraweeView simpleDraweeView;
-        private TextView titleText;
         public MyViewHolder(View itemView) {
             super(itemView);
-            simpleDraweeView=itemView.findViewById(R.id.discover_fragment_andorid_line_simp);
-            titleText=itemView.findViewById(R.id.discover_fragment_andorid_line_title);
+            simpleDraweeView=itemView.findViewById(R.id.discover_fragment_fuli_adapter_simple);
         }
     }
-    public class MyvercalViewHolder extends RecyclerView.ViewHolder{
-        private SimpleDraweeView simpleDraweeView,simpleDraweeView1,simpleDraweeView2;
-        private TextView titleText;
-        public MyvercalViewHolder(View itemView) {
-            super(itemView);
-            titleText=itemView.findViewById(R.id.discover_fragment_andorid_vercal_title);
-            simpleDraweeView=itemView.findViewById(R.id.discover_fragment_andorid_vercal_simple);
-            simpleDraweeView1=itemView.findViewById(R.id.discover_fragment_andorid_vercal_simple1);
-            simpleDraweeView2=itemView.findViewById(R.id.discover_fragment_andorid_vercal_simple2);
-        }
-    }
+
 }

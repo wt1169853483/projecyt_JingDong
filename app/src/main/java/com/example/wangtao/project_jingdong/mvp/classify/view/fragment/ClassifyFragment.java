@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.classify.view.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPsci
 import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
 import com.example.wangtao.project_jingdong.mvp.classify.presenter.ClassifyPresenter;
 import com.example.wangtao.project_jingdong.mvp.classify.view.iview.IClassView;
+import com.example.wangtao.project_jingdong.mvp.homepage.view.activity.HomeSearchActivity;
 
 import java.util.List;
 
@@ -37,6 +40,7 @@ import java.util.List;
 public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements IClassView {
     private static final String TAG = "ClassifyFragment";
     private ListView listView;
+    private EditText editText;
 
     @Override
     protected int protetedId() {
@@ -50,7 +54,7 @@ public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements
     protected void initView(View view) {
          //获取组件
         listView = view.findViewById(R.id.classfiy_fragment_listView);
-
+        editText = view.findViewById(R.id.classify_fragment_editText);
     }
 
     @Override
@@ -61,6 +65,13 @@ public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements
     @Override
     protected void initData() {
         presenter.getClassPresenter();
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), HomeSearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
    //请求数据成功
@@ -184,15 +195,6 @@ public class ClassifyFragment extends BaseFragment<ClassifyPresenter> implements
         public void setPages(int pages) {
             this.pages = pages;
         }
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser){
-
-        }
-
     }
 
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shoping_fragment_expan_child_layout"
     android:orientation="horizontal">
    <CheckBox
        android:layout_marginLeft="20dp"
@@ -11,8 +12,8 @@
        android:id="@+id/shoping_fragment_expan_child_check"
        />
     <com.facebook.drawee.view.SimpleDraweeView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:placeholderImage="@mipmap/ic_launcher"
         android:id="@+id/shoping_fragment_expan_child_simple"
         />
@@ -48,7 +49,7 @@
     <com.example.wangtao.project_jingdong.mvp.shoppingcart.view.fragment.MyAddStuds
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.25"
+        android:layout_weight="0.5"
         android:gravity="center_vertical"
         android:id="@+id/shoping_fragment_expan_chile_MyAddStuds"
         ></com.example.wangtao.project_jingdong.mvp.shoppingcart.view.fragment.MyAddStuds>

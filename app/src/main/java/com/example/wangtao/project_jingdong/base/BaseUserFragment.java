@@ -1,6 +1,5 @@
 package com.example.wangtao.project_jingdong.base;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,14 +14,13 @@ import android.view.ViewGroup;
  * 描述:
  * 作者:wangtao
  */
-public abstract class BaseFragment <P extends BasePresenter> extends Fragment {
+public abstract class BaseUserFragment<P extends BasePresenter> extends Fragment {
     protected P presenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(protetedId(),container,false);
-        presenter =proPresenter();
         initView(view);
         return view;
     }
@@ -30,10 +28,22 @@ public abstract class BaseFragment <P extends BasePresenter> extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (presenter == null){
+            presenter =proPresenter();
+        }
         initListener();
-
         initData();
+    }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+               if (presenter == null){
+                       return;
+               }
+               initData();
+        }
     }
 
     protected abstract int protetedId();

@@ -5,91 +5,23 @@
       android:orientation="vertical"
     android:background="#eeeeee"
     >
-
-       <!-- <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/"
-            ></android.support.v7.widget.RecyclerView>-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            <TextView
-                android:id="@+id/indent_fragment_but_adapter_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#ff3300"
-                android:text="日期:"
-                android:textSize="20dp" />
-            <TextView
-                android:id="@+id/commodity_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:textColor="#cac4c3"
-                android:text="推荐商品"
-                android:textSize="15dp" />
-            <TextView
-                android:id="@+id/indent_fragment_but_adapter_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="5dp"
-                android:textColor="#ff3300"
-                android:text="商品价格"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          >
-          <TextView
-              android:layout_width="0dp"
-              android:layout_height="wrap_content"
-              android:layout_weight="2"
-              />
-         <Button
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:id="@+id/indent_fragment_but_adapter_btn"
-             android:text="未支付"
-             android:background="#f00"
-             />
-      </LinearLayout>
-    <View
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:text="待支付"
+       android:id="@+id/indent_fragment_but_alert_serview_btn0"
+       />
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#000"
+        android:layout_height="match_parent"
+        android:text="已支付"
+        android:id="@+id/indent_fragment_but_alert_serview_btn1"
+
         />
-   <!-- <LinearLayout
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/commodity_car_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:layout_weight="1"
-            android:textColor="#ff3300"
-            android:text="实付款 ： ￥15.80 "
-            android:textSize="20dp" />
-
-        <Button
-            android:id="@+id/commodity_car_mai_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="#ff3300"
-            android:text="确认支付"
-            android:textSize="20dp" />
-    </LinearLayout>-->
+        android:layout_height="match_parent"
+        android:text="已取消"
+        android:id="@+id/indent_fragment_but_alert_serview_btn2"
+        />
 </LinearLayout>

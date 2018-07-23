@@ -9,9 +9,9 @@ package com.example.wangtao.project_jingdong.mvp.homepage.model.bean;
 public class HomePidBean {
     /**
      * msg :
-     * seller : {"description":"我是商家20","icon":"http://120.27.23.105/images/icon.png","name":"商家20","productNums":999,"score":5,"sellerid":20}
+     * seller : {"description":"我是商家1","icon":"http://120.27.23.105/images/icon.png","name":"商家1","productNums":999,"score":4.9,"sellerid":1}
      * code : 0
-     * data : {"bargainPrice":111.99,"createtime":"2017-10-14T21:48:08","detailUrl":"https://item.m.jd.com/product/4719303.html?utm_source=androidapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=QQfriends","images":"https://m.360buyimg.com/n0/jfs/t9004/210/1160833155/647627/ad6be059/59b4f4e1N9a2b1532.jpg!q70.jpg|https://m.360buyimg.com/n0/jfs/t7504/338/63721388/491286/f5957f53/598e95f1N7f2adb87.jpg!q70.jpg|https://m.360buyimg.com/n0/jfs/t7441/10/64242474/419246/adb30a7d/598e95fbNd989ba0a.jpg!q70.jpg","itemtype":2,"pid":4,"price":999,"pscid":1,"salenum":356,"sellerid":20,"subhead":"每个中秋都不能简单，无论身在何处，你总需要一块饼让生活更圆满，京东月饼让爱更圆满京东自营，闪电配送，更多惊喜，快用手指戳一下","title":"北京稻香村 稻香村中秋节月饼 老北京月饼礼盒655g"}
+     * data : {"bargainPrice":11800,"createtime":"2017-10-10T17:33:37","detailUrl":"https://item.m.jd.com/product/4338107.html?utm#_source=androidapp&utm#_medium=appshare&utm#_campaign=t#_335139774&utm#_term=QQfriends","images":"https://m.360buyimg.com/n0/jfs/t6700/155/2098998076/156185/6cf95035/595dd5a5Nc3a7dab5.jpg!q70.jpg","itemtype":0,"pid":57,"price":5199,"pscid":40,"salenum":4343,"sellerid":1,"subhead":"【i5 MX150 2G显存】全高清窄边框 8G内存 256固态硬盘 支持指纹识别 预装WIN10系统","title":"小米(MI)Air 13.3英寸全金属轻薄笔记本(i5-7200U 8G 256G PCle SSD MX150 2G独显 FHD 指纹识别 Win10）银 "}
      */
 
     private String msg;
@@ -53,19 +53,19 @@ public class HomePidBean {
 
     public static class SellerBean {
         /**
-         * description : 我是商家20
+         * description : 我是商家1
          * icon : http://120.27.23.105/images/icon.png
-         * name : 商家20
+         * name : 商家1
          * productNums : 999
-         * score : 5
-         * sellerid : 20
+         * score : 4.9
+         * sellerid : 1
          */
 
         private String description;
         private String icon;
         private String name;
         private int productNums;
-        private int score;
+        private double score;
         private int sellerid;
 
         public String getDescription() {
@@ -100,11 +100,11 @@ public class HomePidBean {
             this.productNums = productNums;
         }
 
-        public int getScore() {
+        public double getScore() {
             return score;
         }
 
-        public void setScore(int score) {
+        public void setScore(double score) {
             this.score = score;
         }
 
@@ -119,18 +119,18 @@ public class HomePidBean {
 
     public static class DataBean {
         /**
-         * bargainPrice : 111.99
-         * createtime : 2017-10-14T21:48:08
-         * detailUrl : https://item.m.jd.com/product/4719303.html?utm_source=androidapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=QQfriends
-         * images : https://m.360buyimg.com/n0/jfs/t9004/210/1160833155/647627/ad6be059/59b4f4e1N9a2b1532.jpg!q70.jpg|https://m.360buyimg.com/n0/jfs/t7504/338/63721388/491286/f5957f53/598e95f1N7f2adb87.jpg!q70.jpg|https://m.360buyimg.com/n0/jfs/t7441/10/64242474/419246/adb30a7d/598e95fbNd989ba0a.jpg!q70.jpg
-         * itemtype : 2
-         * pid : 4
-         * price : 999
-         * pscid : 1
-         * salenum : 356
-         * sellerid : 20
-         * subhead : 每个中秋都不能简单，无论身在何处，你总需要一块饼让生活更圆满，京东月饼让爱更圆满京东自营，闪电配送，更多惊喜，快用手指戳一下
-         * title : 北京稻香村 稻香村中秋节月饼 老北京月饼礼盒655g
+         * bargainPrice : 11800
+         * createtime : 2017-10-10T17:33:37
+         * detailUrl : https://item.m.jd.com/product/4338107.html?utm#_source=androidapp&utm#_medium=appshare&utm#_campaign=t#_335139774&utm#_term=QQfriends
+         * images : https://m.360buyimg.com/n0/jfs/t6700/155/2098998076/156185/6cf95035/595dd5a5Nc3a7dab5.jpg!q70.jpg
+         * itemtype : 0
+         * pid : 57
+         * price : 5199
+         * pscid : 40
+         * salenum : 4343
+         * sellerid : 1
+         * subhead : 【i5 MX150 2G显存】全高清窄边框 8G内存 256固态硬盘 支持指纹识别 预装WIN10系统
+         * title : 小米(MI)Air 13.3英寸全金属轻薄笔记本(i5-7200U 8G 256G PCle SSD MX150 2G独显 FHD 指纹识别 Win10）银
          */
 
         private double bargainPrice;
@@ -242,6 +242,9 @@ public class HomePidBean {
             this.title = title;
         }
     }
+
+
+
 
     /* *//**
      * msg :

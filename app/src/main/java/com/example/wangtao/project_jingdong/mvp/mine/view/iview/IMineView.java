@@ -3,6 +3,7 @@ package com.example.wangtao.project_jingdong.mvp.mine.view.iview;
 import com.example.wangtao.project_jingdong.base.Iview;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineLoginBean;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineRegBean;
+import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineUploadBean;
 
 /**
  * Created by wangtao on 2018/7/13.
@@ -14,6 +15,7 @@ public interface IMineView extends Iview {
         void getMineSuccess(MineLoginBean json);
         void getMineError(String error);
         void RegMineSuccess(MineRegBean json);
+        void getUploadMineSuccess(MineUploadBean json);
         void RegMineError(String error);
         void onFaild(String onfaild);
 }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.wangtao.project_jingdong.base.BasePresenter;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.HomeModel;
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeCatagoryBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeUtilBean;
@@ -145,6 +146,37 @@ public class HomePresenter extends BasePresenter<HomeIview> {
                     public void onError(Throwable e) {
                         if (iview != null){
                             iview.getPidDataError(e.toString());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+    //结算
+    public void getBuyPresenter(String uid,String price){
+        homeModel.getBuyCar(uid,price)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<HomeButBean>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        compositeDisposable.add(d);
+                    }
+
+                    @Override
+                    public void onNext(HomeButBean homeButBean) {
+                        if (iview != null){
+                            iview.getButHomeSuccess(homeButBean);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (iview != null){
+                            iview.getHomeError(e.toString());
                         }
                     }
 

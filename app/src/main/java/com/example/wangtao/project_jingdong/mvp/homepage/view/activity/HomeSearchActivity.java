@@ -17,6 +17,7 @@ import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseActivity;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.adapter.HomeSearchRecycleAdapter;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.adapter.RectcleMiaoshaAdapter;
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeSearchBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.presenter.HomeSearchPresenter;
 import com.example.wangtao.project_jingdong.mvp.homepage.view.iview.IHomeSearch;
@@ -37,6 +38,8 @@ public class HomeSearchActivity extends BaseActivity<HomeSearchPresenter> implem
     private Button jiageBtn;
     private RecyclerView recyclerView;
     private String nameText;
+    private ImageButton imageButton;
+
     @Override
     protected int protetedId() {
         return R.layout.activity_home_search;
@@ -59,6 +62,7 @@ public class HomeSearchActivity extends BaseActivity<HomeSearchPresenter> implem
 
         myFlowLayout.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.GONE);
+        imageButton = findViewById(R.id.activity_home_search_imageBtan);
     }
 
     @Override
@@ -118,6 +122,12 @@ public class HomeSearchActivity extends BaseActivity<HomeSearchPresenter> implem
                 presenter.getSearchPresenter(nameText,"1","2");
             }
         });
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -136,6 +146,11 @@ public class HomeSearchActivity extends BaseActivity<HomeSearchPresenter> implem
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void getButHomeSuccess(HomeButBean json) {
+
     }
 
     @Override

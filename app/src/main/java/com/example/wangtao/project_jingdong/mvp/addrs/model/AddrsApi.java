@@ -1,8 +1,10 @@
-package com.example.wangtao.project_jingdong.mvp.indent.model;
+package com.example.wangtao.project_jingdong.mvp.addrs.model;
 
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyLeftBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyPscidBean;
-import com.example.wangtao.project_jingdong.mvp.classify.model.bean.ClassifyRightBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsAddBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsDefaultBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsSetBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUpdataBean;
+import com.example.wangtao.project_jingdong.mvp.addrs.model.bean.AddrsUserBean;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentAddrBean;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentBean;
 import com.example.wangtao.project_jingdong.mvp.indent.model.bean.IndentUpdataBean;
@@ -18,14 +20,19 @@ import retrofit2.http.Query;
  * 描述:
  * 作者:wangtao
  */
-public interface IndentApi {
-        @GET(Config.getOrders_Info)
-        Observable<IndentBean> getButRightUrl(@Query("uid") String uid);
-        //修改订单
-        //uid=15314&status=1&orderId=10966
-        @GET(Config.getUpdataOrders_Info)
-        Observable<IndentUpdataBean> getUpdataRightUrl(@Query("uid") String uid, @Query("status") String status, @Query("orderId") String orderId);
-
+public interface AddrsApi {
         @GET(Config.getDefaultUser_addrs)
-        Observable<IndentAddrBean> getDefaAddrightUrl(@Query("uid") String uid);
+        Observable<AddrsDefaultBean> getDefaAddrightUrl(@Query("uid") String uid);
+        //获取常用地址
+        @GET(Config.getUser_addrs)
+        Observable<AddrsUserBean> getUserRightUrl(@Query("uid") String uid);
+        //https://www.zhaoapi.cn/user/addAddr?uid=71&addr=北京市昌平区金域国际1-1-1&mobile=18612991023&name=kson
+        @GET(Config.getaddUser_addrs)
+        Observable<AddrsAddBean> getAddRightUrl(@Query("uid") String uid, @Query("addr") String addr,@Query("mobile") String mobile,@Query("name") String name);
+
+        @GET(Config.getUpdataUser_addrs)
+        Observable<AddrsUpdataBean> getUpdataRightUrl(@Query("uid") String uid, @Query("addrid") String addrid,@Query("mobile") String mobile, @Query("name") String name, @Query("addr") String addr);
+
+        @GET(Config.getDefault_steing_addrs)
+        Observable<AddrsSetBean> getSetDefaAddrightUrl(@Query("uid") String uid, @Query("addrid") String addrid, @Query("status") String status);
 }

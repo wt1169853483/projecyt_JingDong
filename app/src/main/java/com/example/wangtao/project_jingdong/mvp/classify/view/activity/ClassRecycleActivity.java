@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseActivity;
@@ -16,6 +17,8 @@ import com.example.wangtao.project_jingdong.mvp.classify.presenter.ClassifyPrese
 import com.example.wangtao.project_jingdong.mvp.classify.view.iview.IClassView;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.adapter.RectcleMiaoshaAdapter;
 import com.example.wangtao.project_jingdong.mvp.homepage.view.activity.HomeActivity;
+import com.example.wangtao.project_jingdong.mvp.mainpage.view.activity.ShowActivity;
+import com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView;
 
 import java.util.List;
 
@@ -23,6 +26,7 @@ public class ClassRecycleActivity extends BaseActivity<ClassifyPresenter> implem
 
     private RecyclerView recyclerView;
     private int position;
+    private MyTitleView myTitleView;
 
     @Override
     protected int protetedId() {
@@ -37,6 +41,7 @@ public class ClassRecycleActivity extends BaseActivity<ClassifyPresenter> implem
     @Override
     protected void initView() {
         recyclerView = findViewById(R.id.activity_class_recycle_item);
+        myTitleView = findViewById(R.id.activity_class_recycle_mytilte);
     }
     @Override
     protected void initListener() {
@@ -49,6 +54,22 @@ public class ClassRecycleActivity extends BaseActivity<ClassifyPresenter> implem
     @Override
     protected void initData() {
           presenter.getPscidRightPresenter(position+"");
+        myTitleView.setOnMyTitleViewClickListener(new MyTitleView.OnMyTitleViewClickListener() {
+            @Override
+            public void leftClick() {
+                finish();
+            }
+
+            @Override
+            public void searchClick() {
+
+            }
+
+            @Override
+            public void rightClick() {
+
+            }
+        });
     }
 
     @Override
@@ -87,8 +108,10 @@ public class ClassRecycleActivity extends BaseActivity<ClassifyPresenter> implem
                 int pid = dataBean.getPid();
                 Intent intent=new Intent(ClassRecycleActivity.this, HomeActivity.class);
                 intent.putExtra("position",pid);
-                startActivity(intent);
+                startActivityForResult(intent,666);
+
             }
         });
     }
+
 }

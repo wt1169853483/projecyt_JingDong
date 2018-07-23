@@ -3,12 +3,96 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="#fff"
     tools:context=".mvp.addrs.view.activity.AddrsAcrtivity">
-   <android.support.v7.widget.RecyclerView
+   <LinearLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/addrs_activity_recycle"
-       ></android.support.v7.widget.RecyclerView>
-</>
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       >
+     <CheckBox
+         android:layout_width="wrap_content"
+         android:layout_height="match_parent"
+         android:gravity="center_vertical"
+         android:id="@+id/addrs_activity_adapters_checkBox"
+         />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          >
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="名称:"
+             android:textSize="21dp"
+             android:textColor="#000"
+             android:textStyle="bold"
+             android:id="@+id/addrs_activity_adapter_username"
+             />
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:text="名称:"
+             android:textSize="20dp"
+             android:textStyle="bold"
+             android:maxLines="2"
+             android:ellipsize="end"
+             android:id="@+id/addrs_activity_adapter_addrs"
+             />
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginTop="5dp"
+             android:id="@+id/addrs_activity_adapter_bianji"
+             >
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/edit"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="编辑"
+                android:textSize="20dp"
+                />
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginBottom="5dp"
+             >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <TextView
+                android:id="@+id/addrs_activity_adapter_setDefault"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#f00"
+                android:textSize="20dp"
+                />
+         </LinearLayout>
+      </LinearLayout>
+
+   </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        ></View>
+</LinearLayout>

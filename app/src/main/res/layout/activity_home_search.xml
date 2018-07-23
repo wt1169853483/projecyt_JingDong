@@ -17,10 +17,10 @@
             android:layout_marginLeft="10dp"
             android:layout_width="0dp"
             android:layout_height="35dp"
-            android:background="@drawable/a_s"
+            android:background="@drawable/back"
             android:layout_gravity="center"
             android:id="@+id/activity_home_search_imageBtan"
-            android:layout_weight="0.5"
+            android:layout_weight="0.8"
             />
         <EditText
             android:layout_width="0dp"
@@ -40,7 +40,7 @@
             android:text="搜索"
             android:background="#f00"
             android:id="@+id/activity_home_search_sousuo_btn"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             />
     </LinearLayout>
     <com.example.wangtao.project_jingdong.mvp.homepage.view.iview.MyFlowLayout

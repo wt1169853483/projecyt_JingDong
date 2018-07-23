@@ -1,6 +1,7 @@
 package com.example.wangtao.project_jingdong.mvp.homepage.model;
 
 
+import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeButBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeCatagoryBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomePidBean;
 import com.example.wangtao.project_jingdong.mvp.homepage.model.bean.HomeUtilBean;
@@ -34,6 +35,11 @@ public class HomeModel {
     public Observable<HomeaddCarBean> getaddCar(String uid,String pid){
         MyApi myApi = MyRetrofitManager.getDefault().create(MyApi.class);
         Observable<HomeaddCarBean> homeCatagoryBeanObservable = myApi.homeAddCar(uid, pid);
+        return homeCatagoryBeanObservable;
+    }
+    public Observable<HomeButBean> getBuyCar(String uid, String price){
+        MyApi myApi = MyRetrofitManager.getDefault().create(MyApi.class);
+        Observable<HomeButBean> homeCatagoryBeanObservable = myApi.getBuySearch(uid,price);
         return homeCatagoryBeanObservable;
     }
 }

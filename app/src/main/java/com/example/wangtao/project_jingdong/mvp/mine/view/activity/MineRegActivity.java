@@ -10,8 +10,10 @@ import com.example.wangtao.project_jingdong.R;
 import com.example.wangtao.project_jingdong.base.BaseActivity;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineLoginBean;
 import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineRegBean;
+import com.example.wangtao.project_jingdong.mvp.mine.model.bean.MineUploadBean;
 import com.example.wangtao.project_jingdong.mvp.mine.presenter.MinePresenter;
 import com.example.wangtao.project_jingdong.mvp.mine.view.iview.IMineView;
+import com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView;
 
 public class MineRegActivity extends BaseActivity<MinePresenter> implements IMineView {
 
@@ -22,6 +24,8 @@ public class MineRegActivity extends BaseActivity<MinePresenter> implements IMin
     private String emiles;
     private String password;
     private String uNmae;
+    private MyTitleView myTitleView;
+
     @Override
     protected int protetedId() {
         return R.layout.mine_fragment_reg;
@@ -38,6 +42,7 @@ public class MineRegActivity extends BaseActivity<MinePresenter> implements IMin
         pwd = findViewById(R.id.mine_fragment_reg_pwd);
         emile = findViewById(R.id.mine_fragment_reg_emile);
         regBtn = findViewById(R.id.mine_fragment_reg_loginBtn);
+        myTitleView = findViewById(R.id.mine_fragment_reg_mytilte);
     }
 
     @Override
@@ -62,6 +67,22 @@ public class MineRegActivity extends BaseActivity<MinePresenter> implements IMin
                     }
               }
           });
+        myTitleView.setOnMyTitleViewClickListener(new MyTitleView.OnMyTitleViewClickListener() {
+            @Override
+            public void leftClick() {
+                finish();
+            }
+
+            @Override
+            public void searchClick() {
+
+            }
+
+            @Override
+            public void rightClick() {
+
+            }
+        });
     }
 
     @Override
@@ -86,6 +107,11 @@ public class MineRegActivity extends BaseActivity<MinePresenter> implements IMin
              }else{
                  Toast.makeText(MineRegActivity.this,"注册失败",Toast.LENGTH_SHORT).show();
              }
+    }
+
+    @Override
+    public void getUploadMineSuccess(MineUploadBean json) {
+
     }
 
     @Override

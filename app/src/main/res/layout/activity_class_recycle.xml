@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
+    <com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView
+        android:id="@+id/activity_class_recycle_mytilte"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:left_text="返回"
+        app:right_visibility="false"
+        app:search_text="展示界面">
+    </com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

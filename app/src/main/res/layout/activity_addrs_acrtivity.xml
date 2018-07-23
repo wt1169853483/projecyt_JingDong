@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.addrs.view.activity.AddrsAcrtivity">
+    android:orientation="vertical"
+    >
+   <com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView
+       android:id="@+id/activity_addrs_activity_mytilte"
+       android:layout_width="match_parent"
+       android:layout_height="60dp"
+       app:left_text="返回"
+       app:right_visibility="false"
+       app:search_text="选择地址">
 
-</android.support.constraint.ConstraintLayout>
+   </com.example.wangtao.project_jingdong.utils.mytitle.MyTitleView>
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:id="@+id/addrs_activity_recycle"
+       android:layout_weight="1"
+       ></android.support.v7.widget.RecyclerView>
+   <Button
+       android:id="@+id/addrs_activity_add"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:background="#f00"
+       android:text="+      添加"
+       android:textSize="20dp"
+       android:textColor="#fff"
+       />
+</LinearLayout>
